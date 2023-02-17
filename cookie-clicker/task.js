@@ -15,34 +15,28 @@ async function clicker() {
     counter.textContent = Number(counter.textContent) + 1;
     let d = new Date();
     let time = d.getTime();
+    let clickTime = 0
     if (LastClickTime == 0) {
-        let clickTime = 0
+        clickTime = 0
     } else {
-        let clickTime = (time - LastClickTime) / 1000;
+        clickTime = (time - LastClickTime) / 1000;
     };
     allTime += clickTime;
     let midClicktime = allTime/Number(counter.textContent);
+    let midClickSpeed = 0
     if (midClicktime == 0) {
-        let midClickSpeed = 0;
+        midClickSpeed = 0;
     } else {
-        let midClickSpeed = 1 / midClicktime;
+        midClickSpeed = 1 / midClicktime;
     };
     speed.innerHTML = midClickSpeed.toFixed(3);
     // вариант с чередованием:
-    // if (Number(counter.textContent) % 2 !== 0) {
-    //     cookie.width += 30;
-    //     cookie.height += 30;
-    // } else {
-    //     cookie.width -= 30;
-    //     cookie.height -= 30;
-    // };
+    // cookie.width = Number(counter.textContent) % 2 ? 230 : 200;
     
     // Но так интереснее:
     cookie.width += 30;
-    cookie.height += 30;
     await sleep(50);
     cookie.width -= 30;
-    cookie.height -= 30;
     
     LastClickTime = time;
 };
